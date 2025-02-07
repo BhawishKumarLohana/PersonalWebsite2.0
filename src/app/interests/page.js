@@ -41,7 +41,7 @@ export default function Interests() {
         <div
           className="absolute inset-0 bg-cover bg-center z-0"
           style={{
-            backgroundImage: 'url("interests-cover.png")', // Replace with your interests background image
+            backgroundImage: 'url("in-cover.png")', // Replace with your interests background image
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
