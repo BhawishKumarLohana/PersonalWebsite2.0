@@ -34,7 +34,7 @@ function Hero() {
        animate={{ opacity: 1, y: 0 }}
        transition={{ duration: 1 }}
        className="border-2 border-yellow-300 text-yellow-300 font-semibold py-2 px-6 rounded-lg transition-all duration-300 transform hover:bg-yellow-300 hover:text-white hover:border-transparent mr-4"
-       href="/path/to/your/cv.pdf"  // Replace with your CV link
+       href="https://drive.google.com/file/d/10lpnvUzADT7pL3Fa_Nc1DNxZvzoERgXq/view?usp=sharing"  // Replace with your CV link
       >
         
             Download CV
