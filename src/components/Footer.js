@@ -10,10 +10,8 @@ const Footer = () => {
           </p>
           <div className="mt-2">
           <div className="mt-4 flex justify-center">
-          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-300 mx-2">
-            <FontAwesomeIcon icon={faInstagram} size="lg" />
-          </a>
-          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-300 mx-2">
+          
+          <a href="https://www.linkedin.com/in/bhawishkumar/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-gray-300 mx-2">
             <FontAwesomeIcon icon={faLinkedin} size="lg" />
           </a>
         </div>
