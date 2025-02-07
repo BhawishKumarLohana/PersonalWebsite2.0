@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const postsDirectory = path.join(process.cwd(), 'src', 'app', 'content'); 
+const postsDirectory = path.join(process.cwd(), 'public', 'content'); 
 export function getAllPosts() {
    
   const filenames = fs.readdirSync(postsDirectory);
