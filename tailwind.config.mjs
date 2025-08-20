@@ -11,9 +11,28 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
     },
   },
   plugins: [
     require('@tailwindcss/typography'),
+    function({ addUtilities }) {
+      addUtilities({
+        '.scrollbar-hide': {
+          /* IE and Edge */
+          '-ms-overflow-style': 'none',
+          /* Firefox */
+          'scrollbar-width': 'none',
+          /* Safari and Chrome */
+          '&::-webkit-scrollbar': {
+            display: 'none'
+          }
+        }
+      })
+    }
   ],
 };
