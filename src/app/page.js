@@ -14,10 +14,10 @@ import { useScrollNavigation } from "@/hooks/useScrollNavigation";
 export default function Home() {
   const sections = [
     { id: 'hero', title: 'Introduction', component: <Hero /> },
-    { id: 'experience', title: 'Experience & Skills', component: <ExperienceSection /> },
+    { id: 'experience', title: 'Experience', component: <ExperienceSection /> },
     { id: 'projects', title: 'Projects', component: <ProjectsSection /> },
-    { id: 'blogs', title: 'Blog & Insights', component: <BlogsSection /> },
-    { id: 'hobbies', title: 'Hobbies & Study Notes', component: <HobbiesNotesSection /> },
+    { id: 'blogs', title: 'Blog ', component: <BlogsSection /> },
+    { id: 'hobbies', title: 'Study Notes', component: <HobbiesNotesSection /> },
     { id: 'contact', title: 'Contact', component: <ContactSection /> }
   ];
 

@@ -221,7 +221,7 @@ function Hero() {
         
         {/* Subtitle */}
         <p className="text-xl md:text-2xl text-white/80 mb-16 font-light tracking-wide">
-          Software Developer & Creative Problem Solver
+          Full Stack Developer
         </p>
         
         {/* Menu Options */}
