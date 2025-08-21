@@ -25,96 +25,189 @@ import {
   SiAlibabacloud,
   SiMysql,
 } from "react-icons/si";
+import { FiChevronDown } from "react-icons/fi";
+import ProfileImage from "./ProfilePicture";
+
+const EXPERIENCE = [
+  {
+    id: "ipv4",
+    date: "June 2025 – Present",
+    color: "blue",
+    dotClass: "bg-blue-400 ring-blue-400/30",
+    title: "Full Stack Development Intern",
+    org: "Ipv4 Superhub Limited",
+    short: "Working across React/Next.js + Node/Spring services and infra.",
+    bullets: [
+      "Built compact UI components and integrated REST endpoints.",
+      "Improved deployment flow; containerized services with Docker.",
+      "Collaborated on DB schema tweaks and performance profiling.",
+    ],
+    stack: ["React", "Next.js", "Node/Spring", "Docker"],
+  },
+  {
+    id: "hkbu-assistant",
+    date: "Sep 2024 – Jan 2025",
+    color: "blue",
+    dotClass: "bg-blue-400 ring-blue-400/30",
+    title: "Student Assistant",
+    org: "Language Centre, Hong Kong Baptist University",
+    short: "Built pages and supported chatbot workshops for 100+ students.",
+    bullets: [
+      "Designed and shipped pages improving visibility and conversions.",
+      "Ran hands-on chatbot sessions; collected learner feedback.",
+      "Optimized content delivery and accessibility across devices.",
+    ],
+    stack: ["HTML/CSS", "JavaScript", "Design Systems"],
+  },
+  {
+    id: "hkbu-intern",
+    date: "Jun 2024 – Aug 2024",
+    color: "pink",
+    dotClass: "bg-pink-400 ring-pink-400/30",
+    title: "Software Developer Intern",
+    org: "Language Centre, Hong Kong Baptist University",
+    short: "Debugged & tested a full-stack link shortener (Sails.js).",
+    bullets: [
+      "Resolved frontend bugs, refined flows; ~25% UX uplift.",
+      "Auth & routing fixes; added regression tests.",
+      "Deployed staging builds and wrote concise release notes.",
+    ],
+    stack: ["Sails.js", "JavaScript", "Testing"],
+  },
+];
 
 const ExperienceSection = () => {
   const [photoSrc, setPhotoSrc] = useState(null);
+  const [openIds, setOpenIds] = useState(() => new Set());
 
-  const handlePhotoUpload = (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const url = URL.createObjectURL(file);
-    setPhotoSrc(url);
+  
+
+  const toggleOpen = (id) => {
+    setOpenIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
   };
 
   const handleDownloadCV = () => {
     console.log("Downloading CV...");
   };
 
+  // Extra milestones (decorative circular positions) along the line
+  const horizontalMilestones = [12, 36, 64, 88]; // percentages across width
+  const verticalMilestones = [15, 40, 70, 90];   // percentages down the height
+
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 text-white relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 py-14 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-          Experience &amp; Skills
-        </h2>
+        <h2 className="text-4xl md:text-5xl font-bold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 relative group">
+        Professional Experience
+        <span className="px-2 py-2 mt-11 absolute left-1/2 transform -translate-x-1/2 text-base md:text-lg font-semibold text-yellow-500 opacity-0 group-hover:opacity-100 animate-pulse transition duration-1000 ease-in-out drop-shadow-lg">
+          FOR RECRUITERS
+        </span>
+      </h2>
+
+
 
         {/* ===== Experience (LinkedIn-style compact card) ===== */}
         <div className="relative mb-14 mx-auto max-w-4xl">
           <div className="rounded-xl bg-white/10 border border-white/15 backdrop-blur-md shadow-lg overflow-hidden">
             {/* Header with photo uploader (compact) */}
-            <div className="flex items-center gap-3 p-4">
-              <div className="relative">
-                <div className="w-14 h-14 rounded-full overflow-hidden ring-2 ring-white/25">
-                  {photoSrc ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={photoSrc} alt="Profile" className="w-full h-full object-cover" />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-white/15 text-white/70 text-xs">
-                      Upload
-                    </div>
-                  )}
-                </div>
-                <label className="absolute -bottom-1 -right-1 cursor-pointer">
-                  <input type="file" accept="image/*" onChange={handlePhotoUpload} className="hidden" />
-                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-blue-500 text-white text-xs border border-white/20 hover:scale-110 transition-transform">
-                    +
-                  </span>
-                </label>
-              </div>
-
-              <div className="text-left">
-                <h3 className="text-base sm:text-lg font-semibold">Experience</h3>
-                <p className="text-white/70 text-xs sm:text-sm">Add your photo to personalize your timeline</p>
-              </div>
+          <div className="flex items-center gap-3 p-4">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0">
+              <ProfileImage />
             </div>
+            <div className="text-left">
+              <h3 className="text-base sm:text-lg font-semibold">Bhawish Kumar</h3>
+            </div>
+          </div>
+
 
             {/* Timeline body */}
             <div className="relative p-4">
+              {/* Decorative extra circular positions */}
              
               {/* Items wrapper (compact) */}
               <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-                {/* Item 1 */}
-                <div className="relative flex-1 group">
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="w-3 h-3 rounded-full bg-blue-400 ring-2 ring-blue-400/30 animate-pulse transition-all group-hover:scale-110 group-hover:ring-blue-300/50" />
-                    <span className="text-[11px] bg-white/10 px-2 py-0.5 rounded-full border border-white/10 tracking-wide">
-                      Sep 2024 – Present
-                    </span>
-                  </div>
-                  <div className="p-3 rounded-lg bg-white/5 border border-white/10 text-left text-[13px] transition-all group-hover:scale-[1.02] group-hover:-translate-y-[2px] group-hover:shadow-lg group-hover:border-white/20 group-hover:bg-white/10">
-                    <p className="font-semibold text-sm">Student Assistant</p>
-                    <p className="text-blue-200">Language Centre, Hong Kong Baptist University</p>
-                    <p className="text-white/70 mt-1">
-                      Built webpages, increased online visibility, and ran chatbot workshops for 100+ students.
-                    </p>
-                  </div>
-                </div>
+                {EXPERIENCE.map((item) => {
+                  const open = openIds.has(item.id);
+                  const isBlue = item.color === "blue";
+                  return (
+                    <div key={item.id} className="relative flex-1 group">
+                      {/* Dot + Date row */}
+                      <div className="flex items-center gap-2 mb-1">
+                        <div
+                          className={`w-3 h-3 rounded-full ring-2 animate-pulse transition-all group-hover:scale-110 ${
+                            item.dotClass
+                          } ${isBlue ? "shadow-[0_0_8px_rgba(59,130,246,0.55)]" : "shadow-[0_0_8px_rgba(236,72,153,0.55)]"}`}
+                        />
+                        <span className="text-[11px] bg-white/10 px-2 py-0.5 rounded-full border border-white/10 tracking-wide">
+                          {item.date}
+                        </span>
+                      </div>
 
-                {/* Item 2 */}
-                <div className="relative flex-1 group">
-                  <div className="flex items-center gap-2 mb-1">
-                    <div className="w-3 h-3 rounded-full bg-pink-400 ring-2 ring-pink-400/30 animate-pulse transition-all group-hover:scale-110 group-hover:ring-pink-300/50" />
-                    <span className="text-[11px] bg-white/10 px-2 py-0.5 rounded-full border border-white/10 tracking-wide">
-                      Jun 2024 – Aug 2024
-                    </span>
-                  </div>
-                  <div className="p-3 rounded-lg bg-white/5 border border-white/10 text-left text-[13px] transition-all group-hover:scale-[1.02] group-hover:-translate-y-[2px] group-hover:shadow-lg group-hover:border-white/20 group-hover:bg-white/10">
-                    <p className="font-semibold text-sm">Software Developer Intern</p>
-                    <p className="text-blue-200">Language Centre, Hong Kong Baptist University</p>
-                    <p className="text-white/70 mt-1">
-                      Debugged &amp; tested a full-stack link shortener (Sails.js), improving UX by ~25%.
-                    </p>
-                  </div>
-                </div>
+                      {/* Card */}
+                      <div className="p-3 rounded-lg bg-white/5 border border-white/10 text-left text-[13px] transition-all group-hover:scale-[1.02] group-hover:-translate-y-[2px] group-hover:shadow-lg group-hover:border-white/20 group-hover:bg-white/10">
+                        {/* Header Row: title/org + View More */}
+                        <div className="flex items-start justify-between gap-2">
+                          <div>
+                            <p className="font-semibold text-sm">{item.title}</p>
+                            <p className="text-blue-200">{item.org}</p>
+                          </div>
+
+                          {/* View More Toggle */}
+                          <button
+                            onClick={() => toggleOpen(item.id)}
+                            className="flex items-center gap-1 text-white/80 hover:text-white px-2 py-1 rounded-md bg-white/5 border border-white/10 hover:bg-white/10 transition text-xs"
+                            aria-expanded={open}
+                            aria-controls={`exp-${item.id}`}
+                          >
+                            <span>{open ? "Hide" : "View"}</span>
+                            <FiChevronDown
+                              className={`transition-transform ${open ? "rotate-180" : ""}`}
+                              aria-hidden
+                            />
+                          </button>
+                        </div>
+
+                        {/* Short summary */}
+                        {item.short && (
+                          <p className="text-white/70 mt-2">{item.short}</p>
+                        )}
+
+                        {/* Expandable details */}
+                        <div
+                          id={`exp-${item.id}`}
+                          className={`grid transition-[grid-template-rows] duration-300 ease-out overflow-hidden ${
+                            open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                          }`}
+                        >
+                          <div className="min-h-0">
+                            <ul className="mt-3 list-disc list-outside pl-5 space-y-1 text-white/80">
+                              {item.bullets.map((b, i) => (
+                                <li key={i}>{b}</li>
+                              ))}
+                            </ul>
+                            {item.stack?.length ? (
+                              <div className="mt-3 flex flex-wrap gap-1.5">
+                                {item.stack.map((t) => (
+                                  <span
+                                    key={t}
+                                    className="px-2 py-0.5 rounded-full bg-white/10 border border-white/10 text-[11px]"
+                                  >
+                                    {t}
+                                  </span>
+                                ))}
+                              </div>
+                            ) : null}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
@@ -125,7 +218,7 @@ const ExperienceSection = () => {
                 className="group relative px-5 py-2.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-md text-white text-sm font-medium overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl"
               >
                 <span className="relative z-10 flex items-center gap-2">
-                  📄 Download CV
+                   Download Resume
                   <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
@@ -234,3 +327,4 @@ const ExperienceSection = () => {
 };
 
 export default ExperienceSection;
+
