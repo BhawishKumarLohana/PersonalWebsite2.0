@@ -58,11 +58,11 @@ const Modal = ({ open, onClose, children }) => {
 /* --- Media component (image or video) --- */
 const ProjectMedia = ({ mediaType, mediaSrc, poster = "", alt = "" }) => {
   return (
-    <div className="mb-4 overflow-hidden rounded-xl border border-white/20 bg-black/30">
+    <div className="mb-2 overflow-hidden rounded-xl border border-white/20 bg-black/30 px-2 py-2">
       <div className="relative w-full aspect-video">
         {mediaType === "video" ? (
           <video
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover px-5 py-5"
             src={mediaSrc}
             poster={poster || undefined}
             controls
@@ -86,6 +86,7 @@ const ProjectCard = ({ project, index }) => {
   const {
     title,
     description,
+    specialAchievement, // 👈 used below
     blogLink,
     technologies = [],
     liveDemo,
@@ -94,8 +95,8 @@ const ProjectCard = ({ project, index }) => {
     mediaType,
     mediaSrc,
     poster,
-    details, // longer text for modal
-    bullets = [], // bullet list for modal
+    details,
+    bullets = [],
   } = project;
 
   const [open, setOpen] = useState(false);
@@ -105,6 +106,8 @@ const ProjectCard = ({ project, index }) => {
       <div className="group relative bg-white/10 backdrop-blur-sm rounded-2xl p-5 border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-[1.02]">
         {/* Status dot */}
         <div className={`absolute top-4 right-4 w-3 h-3 ${statusColor} rounded-full animate-pulse`} />
+
+       
 
         {/* Media at the top */}
         {mediaSrc && (
@@ -123,6 +126,14 @@ const ProjectCard = ({ project, index }) => {
             {description}
           </p>
         </div>
+
+        {/* Optional inline callout chip (keeps attention within card body) */}
+        {specialAchievement && (
+          <div className="mb-4 inline-flex items-center gap-2 rounded-lg border border-amber-400/60 bg-amber-500/10 px-2.5 py-1.5 text-[11px] text-amber-200">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-300 animate-pulse" />
+            <span className="font-medium">{specialAchievement}</span>
+          </div>
+        )}
 
         {/* Tech chips */}
         <div className="flex flex-wrap gap-2 mb-5">
@@ -145,7 +156,7 @@ const ProjectCard = ({ project, index }) => {
               rel="noopener noreferrer"
               className="flex-1 px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg text-white text-sm font-medium hover:from-indigo-600 hover:to-purple-700 transition-all text-center"
             >
-               Live Demo
+              Live Demo
             </a>
           )}
 
@@ -186,6 +197,17 @@ const ProjectCard = ({ project, index }) => {
           />
         )}
 
+        {/* Modal achievement callout */}
+        {specialAchievement && (
+          <div className="mt-3 mb-4 rounded-xl border-2 border-amber-400/70 bg-amber-500/10 px-3 py-2 flex items-start gap-2">
+            <svg viewBox="0 0 24 24" className="w-5 h-5 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M8 21h8M12 17v4M7 4h10v3a5 5 0 0 1-10 0V4Z" />
+              <path d="M7 7H5a3 3 0 0 1-3-3V3h5M17 7h2a3 3 0 0 0 3-3V3h-5" />
+            </svg>
+            <span className="text-amber-100 text-sm font-semibold leading-5">{specialAchievement}</span>
+          </div>
+        )}
+
         <h3 className="text-2xl font-bold mb-2">{title}</h3>
         <p className="text-white/80 mb-3">{description}</p>
 
@@ -217,12 +239,12 @@ const ProjectCard = ({ project, index }) => {
               href={liveDemo}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 px-4 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg text-white text-sm font-medium hover:from-indigo-600 hover:to-purple-700 transition-all text-center"
+              className="flex-1 px-10 py-10 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg text-white text-sm font-medium hover:from-indigo-600 hover:to-purple-700 transition-all text-center"
             >
-               Live Demo
+              Live Demo
             </a>
           )}
-           <a
+          <a
             href={blogLink}
             target="_blank"
             rel="noopener noreferrer"
@@ -231,7 +253,7 @@ const ProjectCard = ({ project, index }) => {
             <span>Blog</span>
           </a>
 
-          <a
+        <a
             href={github}
             target="_blank"
             rel="noopener noreferrer"
@@ -246,10 +268,10 @@ const ProjectCard = ({ project, index }) => {
   );
 };
 
-/* --- Section --- */
-const ProjectsSection = () => {
-  const projects = [
-    {
+
+{/* 
+
+  {
       title: "Cloud Kitchen",
       blogLink:"",
       description:
@@ -259,7 +281,7 @@ const ProjectsSection = () => {
       github: "https://github.com/BhawishKumarLohana/CloudKitchen",
       statusColor: "bg-green-400",
       mediaType: "image",
-      mediaSrc: "/projects/hkbumun-cover.jpg",
+      mediaSrc: "WIP.png",
       details:
         "Project is in Progress. Please wait.",
       bullets: [
@@ -268,8 +290,41 @@ const ProjectsSection = () => {
         
       ],
     },
+  
+  
+  
+  */}
+
+/* --- Section --- */
+const ProjectsSection = () => {
+  const projects = [
+    {
+      title: "FoodBites",
+      specialAchievement : "Nominated for Best Pitch at UnitedHack",
+      blogLink:"",
+      description: 
+     "FoodBites delivers a simple yet powerful solution to inefficiencies in food donation and redistribution.",
+      technologies: ["Next.js", "MySql","GoogleMapsApi"],
+      liveDemo: "https://github.com/BhawishKumarLohana/CloudKitchen",
+      github: "https://github.com/BhawishKumarLohana/CloudKitchen",
+      statusColor: "bg-green-400",
+      mediaType: "image",
+      mediaSrc: "FOODBITESDEMO.gif",
+      details:
+        "",
+      bullets: [
+        "Frontend: Developed with Next.js for rendering and routing",
+        "Styling: Powered by TailwindCSS for responsive, accessible design",
+        "Backend: MySQL used for data storage, managed via Prisma ORM",
+        "Maps Integration: Google Maps API for real-time geolocation and address-based interaction"
+                
+        
+        
+      ],
+    },
     {
       title: "Vista - Crypto Tracker",
+      specialAchievement:null,
       blogLink:"",
       description:
         " Built Crypto website with live coin tracking, portfolio management, price alerts, social features, and chart visualizations",
@@ -277,8 +332,8 @@ const ProjectsSection = () => {
       liveDemo: "https://vista-zeta.vercel.app/",
       github: "https://github.com/BhawishKumarLohana/vista",
       statusColor: "bg-blue-400",
-      mediaType: "video",
-      mediaSrc: "/projects/university-finder-demo.mp4", // <— replace with your video
+      mediaType: "image",
+      mediaSrc: "VistaDemo.gif", // <— replace with your video
       poster: "/projects/university-finder-poster.jpg", // optional poster image
       details:
         "",
@@ -290,6 +345,7 @@ const ProjectsSection = () => {
     },
     {
       title: "HKBUMUN Conference",
+      specialAchievement:null,
       blogLink:"",
       description:
         "Build conference website that acts as the central hub for official conference information, serving 100+ active members.",
@@ -297,8 +353,8 @@ const ProjectsSection = () => {
       liveDemo: "https://hkbumun.vercel.app/",
       github: null ,
       statusColor: "bg-pink-400",
-      mediaType: "video",
-      mediaSrc: "/projects/portfolio-cover.jpg", // <— replace with your image
+      mediaType: "image",
+      mediaSrc: "/HKBUMUNDEMO.gif", 
       details:
         "",
       bullets: [
