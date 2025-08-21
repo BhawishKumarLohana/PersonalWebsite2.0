@@ -115,14 +115,45 @@ const ExperienceSection = () => {
         <div className="relative mb-14 mx-auto max-w-4xl">
           <div className="rounded-xl bg-white/10 border border-white/15 backdrop-blur-md shadow-lg overflow-hidden">
             {/* Header with photo uploader (compact) */}
-          <div className="flex items-center gap-3 p-4">
-            <div className="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0">
-              <ProfileImage />
-            </div>
-            <div className="text-left">
-              <h3 className="text-base sm:text-lg font-semibold">Bhawish Kumar</h3>
-            </div>
+        <div className="flex items-center gap-3 p-4">
+          <div className="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0">
+            <ProfileImage />
           </div>
+          <div className="text-left space-y-1">
+  <h3 className="text-lg sm:text-xl font-semibold text-white">
+    Bhawish Kumar
+  </h3>
+  <div className="flex items-center gap-2 text-sm sm:text-base text-white/80">
+    {/* 🎓 Graduation cap icon */}
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="2"
+      stroke="currentColor"
+      className="w-5 h-5 text-indigo-400"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 14l9-5-9-5-9 5 9 5z"
+      />
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 14l6.16-3.422A12.083 12.083 0 0118 20.25a48.7 48.7 0 01-12 0 12.083 12.083 0 01-.16-9.672L12 14z"
+      />
+    </svg>
+    <p>
+      3rd Year Computer Science Student at{" "}
+      <span className="font-medium text-indigo-300">
+        Hong Kong Baptist University
+      </span>
+    </p>
+  </div>
+</div>
+
+        </div>
 
 
             {/* Timeline body */}
