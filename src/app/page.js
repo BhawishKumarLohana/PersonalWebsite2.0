@@ -23,7 +23,7 @@ export default function Home() {
   const { currentSection, containerRef } = useScrollNavigation(sections);
 
   return (
-    <div ref={containerRef} className="h-screen overflow-y-scroll snap-y snap-mandatory scrollbar-hide">
+    <div ref={containerRef} className="h-screen overflow-y-scroll snap-y snap-proximity scrollbar-hide">
       {/* Section Indicator */}
       <SectionIndicator sections={sections} currentSection={currentSection} />
 
@@ -32,7 +32,7 @@ export default function Home() {
 
       {/* Sections */}
       {sections.map((section, index) => (
-        <div key={section.id} className="snap-start min-h-screen">
+        <div key={section.id} data-section-index={index} className="min-h-screen snap-start">
           {section.component}
         </div>
       ))}
