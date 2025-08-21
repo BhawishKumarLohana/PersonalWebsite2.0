@@ -16,9 +16,8 @@ export default function Home() {
     { id: 'hero', title: 'Introduction', component: <Hero /> },
     { id: 'experience', title: 'Experience', component: <ExperienceSection /> },
     { id: 'projects', title: 'Projects', component: <ProjectsSection /> },
-    { id: 'blogs', title: 'Blog ', component: <BlogsSection /> },
-    { id: 'hobbies', title: 'Study Notes', component: <HobbiesNotesSection /> },
-    { id: 'contact', title: 'Contact', component: <ContactSection /> }
+    { id: 'Study Notes', title: 'Study Notes ', component: <BlogsSection /> },
+    { id: 'What I do For Myself', title: 'What I do For Myself', component: <HobbiesNotesSection /> },
   ];
 
   const { currentSection, containerRef } = useScrollNavigation(sections);
