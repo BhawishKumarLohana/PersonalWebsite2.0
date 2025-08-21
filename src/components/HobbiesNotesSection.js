@@ -39,7 +39,7 @@ const HobbiesNotesSection = () => {
     <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-violet-900 via-purple-900 to-fuchsia-900 text-white">
       <div className="max-w-6xl mx-auto px-4 py-12 text-center">
         <h2 className="text-5xl md:text-6xl font-bold mb-16 text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400">
-          Hobbies & Study Notes
+          What I do for Myself
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
