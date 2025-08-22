@@ -245,7 +245,7 @@ const ExperienceSection = () => {
 
             {/* Footer (actions) */}
             <div className="px-4 py-3 border-t border-white/10">
-            <Link href="/pdfs/resume">
+            <Link href="/pdfs/Resume">
               <button
                 className="group relative px-5 py-2.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-md text-white text-sm font-medium overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl"
               >
