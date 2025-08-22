@@ -27,6 +27,7 @@ import {
 } from "react-icons/si";
 import { FiChevronDown } from "react-icons/fi";
 import ProfileImage from "./ProfilePicture";
+import Link from "next/link";
 
 const EXPERIENCE = [
   {
@@ -244,8 +245,8 @@ const ExperienceSection = () => {
 
             {/* Footer (actions) */}
             <div className="px-4 py-3 border-t border-white/10">
+            <Link href="/pdfs/resume">
               <button
-                onClick={handleDownloadCV}
                 className="group relative px-5 py-2.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-md text-white text-sm font-medium overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl"
               >
                 <span className="relative z-10 flex items-center gap-2">
@@ -256,6 +257,7 @@ const ExperienceSection = () => {
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </button>
+              </Link>
             </div>
           </div>
 
