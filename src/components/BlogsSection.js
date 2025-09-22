@@ -66,6 +66,14 @@ const StudyNotesSection = () => {
       updatedAt: "Jul 2025",
       pdfLink: "/pdfs/SpringBoot_basics.pdf",
     },
+    {
+      subject: "Databases",
+      topic: "All SQL",
+      summary: "Important SQL Stuff",
+      updatedAt: "Sept 2025",
+      pdfLink: "/pdfs/ALLSQL.pdf",
+    },
+
   ];
 
   return (
